@@ -202,9 +202,9 @@ RECOMP_PATCH void EnKitan_Talk(EnKitan* this, PlayState* play) {
                     break;
 
                 default:
-                    if ((play->msgCtx.currentTextId & 1)) {
-                        // Even-numbered textboxes are question textboxes
-                        // The following textbox contains the associated answer choices for this question
+                    if ((play->msgCtx.currentTextId == storedQuestionSet[storedValue])) {
+                        // Checks the current message ID of the question
+                        // Then adds 1 to the value for the corosponding answers
                         Message_ContinueTextbox(play, storedQuestionSet[storedValue + 1]);
                     }
                     break;

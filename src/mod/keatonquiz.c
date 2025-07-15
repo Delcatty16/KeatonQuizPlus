@@ -80,22 +80,32 @@ EZTR_DEFINE_CUSTOM_MSG_HANDLE(CustomQuestion29);
 EZTR_DEFINE_CUSTOM_MSG_HANDLE(CustomAnswer29);
 
 u16 CustomMsgID[60] = {0};
-
+u16 VanillaMsgID[60] ={0x04B6, 0x04B7, 0x04B8, 0x04B9, 0x04BA, 0x04BB, 0x04BC, 0x04BD, 0x04BE, 0x04BF, 0x04C0, 0x04C1, 0x04C2, 0x04C3, 0x04C4, 0x04C5, 0x04C6, 0x04C7, 0x04C8, 0x04C9, 0x04CA, 0x04CB, 0x04CC, 0x04CD, 0x04CE, 0x04CF, 0x04D0, 0x04D1, 0x04D2, 0x04D3, 0x04D4, 0x04D5, 0x04D6, 0x04D7, 0x04D8, 0x04D9, 0x04DA, 0x04DB, 0x04DC, 0x04DD, 0x04DE, 0x04DF, 0x04E0, 0x04E1, 0x04E2, 0x04E3, 0x04E4, 0x04E5, 0x04E6, 0x04E7, 0x04E8, 0x04E9, 0x04EA, 0x04EB, 0x04EC, 0x04ED, 0x04EE, 0x04EF, 0x04F0, 0x04F1};
+u16* storedQuestionSet;
 u32 storedValue;
 
 RECOMP_PATCH u16 EnKitan_GetQuestionMessageId(EnKitan* this) {
     s32 i = 0;
+    f32 numQuestionsInSet;
+
+    if (recomp_get_config_u32("QuestionSet") == 1) {
+        storedQuestionSet = CustomMsgID;
+        numQuestionsInSet = 14.0f;
+    } else {
+        storedQuestionSet = VanillaMsgID;
+        numQuestionsInSet = 30.0f;
+    }
 
     while (true) {
-        s32 rand = Rand_ZeroFloat(14.0f);
+        s32 rand = Rand_ZeroFloat(numQuestionsInSet);
+        storedValue = rand * 2;
 
         // Keep track of which questions have already been asked with a bitset
         if (!(this->textBitSet & (1 << rand))) {
             this->textBitSet |= 1 << rand;
             // 0x04B6 is the start of the question + answer choice textboxes, each question textbox is followed by the
             // choice textbox containing the answer choices
-            storedValue = rand * 2;
-            return CustomMsgID[storedValue];
+            return storedQuestionSet[storedValue];
         }
 
         i++;
@@ -195,7 +205,7 @@ RECOMP_PATCH void EnKitan_Talk(EnKitan* this, PlayState* play) {
                     if ((play->msgCtx.currentTextId & 1)) {
                         // Even-numbered textboxes are question textboxes
                         // The following textbox contains the associated answer choices for this question
-                        Message_ContinueTextbox(play, CustomMsgID[storedValue + 1]);
+                        Message_ContinueTextbox(play, storedQuestionSet[storedValue + 1]);
                     }
                     break;
             }

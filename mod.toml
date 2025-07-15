@@ -84,6 +84,18 @@ percent = false
 default = 5
 
 [[manifest.config_options]]
+id = "KeatonAppearTimer"
+name = "Keaton Appearance Speed"
+description = "How long it takes in seconds for Keaton to appear after cutting the grass."
+type = "Number"
+min = 0
+max = 6
+step = 1
+precision = 1
+percent = false
+default = 6
+
+[[manifest.config_options]]
 id = "string_option"
 name = "String Option"
 description = "Test string config option."

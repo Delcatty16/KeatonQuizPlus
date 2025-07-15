@@ -121,6 +121,58 @@ RECOMP_PATCH u16 EnKitan_GetQuestionMessageId(EnKitan* this) {
 void EnKitan_OfferPrize(EnKitan* this, PlayState* play);
 void EnKitan_Leave(EnKitan* this, PlayState* play);
 void EnKitan_SpawnEffects(EnKitan* this, PlayState* play, s32 numEffects);
+void EnKitan_Appear(EnKitan* this, PlayState* play);
+void EnKitan_Draw(Actor* thisx, PlayState* play);
+void EnKitan_WaitToAppear(EnKitan* this, PlayState* play);
+static ColliderCylinderInit sCylinderInit = {
+    {
+        COL_MATERIAL_NONE,
+        AT_NONE,
+        AC_ON | AC_TYPE_ENEMY,
+        OC1_ON | OC1_TYPE_ALL,
+        OC2_TYPE_1,
+        COLSHAPE_CYLINDER,
+    },
+    {
+        ELEM_MATERIAL_UNK0,
+        { 0x00000000, 0x00, 0x00 },
+        { 0xF7CFFFFF, 0x00, 0x00 },
+        ATELEM_NONE | ATELEM_SFX_NORMAL,
+        ACELEM_ON,
+        OCELEM_ON,
+    },
+    { 20, 40, 0, { 0, 0, 0 } },
+};
+
+RECOMP_PATCH void EnKitan_Init(Actor* thisx, PlayState* play) {
+    EnKitan* this = (EnKitan*)thisx;
+    s32 pad;
+
+    Actor_SetScale(&this->actor, 0.0f);
+    this->actionFunc = EnKitan_WaitToAppear;
+
+    ActorShape_Init(&this->actor.shape, 0.0f, ActorShadow_DrawCircle, 12.0f);
+    SkelAnime_InitFlex(play, &this->skelAnime, &gKeatonSkel, &gKeatonIdleAnim, this->jointTable, this->morphTable,
+                       KEATON_LIMB_MAX);
+    Animation_PlayLoop(&this->skelAnime, &gKeatonIdleAnim);
+
+    Collider_InitAndSetCylinder(play, &this->collider, &this->actor, &sCylinderInit);
+    this->actor.colChkInfo.mass = MASS_IMMOVABLE;
+    Collider_UpdateCylinder(&this->actor, &this->collider);
+
+    this->actor.velocity.y = -9.0f;
+    this->actor.terminalVelocity = -9.0f;
+    this->actor.gravity = -1.0f;
+
+    if ((Player_GetMask(play) != PLAYER_MASK_KEATON) ||
+        Flags_GetCollectible(play, ENKITAN_GET_COLLECT_FLAG(&this->actor))) {
+        Actor_Kill(&this->actor);
+        return;
+    }
+
+    this->timer = recomp_get_config_u32("KeatonAppearTimer") * 20;
+    this->actor.flags &= ~ACTOR_FLAG_ATTENTION_ENABLED;
+}
 
 RECOMP_PATCH void EnKitan_Talk(EnKitan* this, PlayState* play) {
     if (SkelAnime_Update(&this->skelAnime)) {

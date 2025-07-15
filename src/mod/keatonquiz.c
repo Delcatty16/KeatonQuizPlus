@@ -81,6 +81,8 @@ EZTR_DEFINE_CUSTOM_MSG_HANDLE(CustomAnswer29);
 
 u16 CustomMsgID[60] = {0};
 
+u32 storedValue;
+
 RECOMP_PATCH u16 EnKitan_GetQuestionMessageId(EnKitan* this) {
     s32 i = 0;
 
@@ -92,7 +94,8 @@ RECOMP_PATCH u16 EnKitan_GetQuestionMessageId(EnKitan* this) {
             this->textBitSet |= 1 << rand;
             // 0x04B6 is the start of the question + answer choice textboxes, each question textbox is followed by the
             // choice textbox containing the answer choices
-            return CustomMsgID[rand * 2];
+            storedValue = rand * 2;
+            return CustomMsgID[storedValue];
         }
 
         i++;
@@ -105,9 +108,19 @@ RECOMP_PATCH u16 EnKitan_GetQuestionMessageId(EnKitan* this) {
 
 //RECOMP_HOOK("EnKitan_Appear")
 
+void EnKitan_OfferPrize(EnKitan* this, PlayState* play);
+void EnKitan_Leave(EnKitan* this, PlayState* play);
+void EnKitan_SpawnEffects(EnKitan* this, PlayState* play, s32 numEffects);
 
-RECOMP_HOOK("EnKitan_Talk")
-void EnKitanQuizLength(EnKitan* this, PlayState* play) {
+RECOMP_PATCH void EnKitan_Talk(EnKitan* this, PlayState* play) {
+    if (SkelAnime_Update(&this->skelAnime)) {
+        Animation_MorphToLoop(&this->skelAnime, &gKeatonIdleAnim, -10.0f);
+        if (play->msgCtx.currentTextId != 0x04B4) {
+            // If the quiz is ongoing, select a question
+            Message_ContinueTextbox(play, EnKitan_GetQuestionMessageId(this));
+        }
+    }
+
     switch (Message_GetState(&play->msgCtx)) {
         case TEXT_STATE_CHOICE:
             if (!Message_ShouldAdvance(play)) {
@@ -137,19 +150,59 @@ void EnKitanQuizLength(EnKitan* this, PlayState* play) {
                 this->timer = 0;
                 this->textBitSet = 0;
             }
-                        break;
-        
+            break;
+
         case TEXT_STATE_EVENT:
             if (!Message_ShouldAdvance(play)) {
                 break;
             }
-                //Makes the text box able to advance, even when the Message ID is odd.
-            if ((play->msgCtx.currentTextId & 1)) {
-                Message_ContinueTextbox(play, play->msgCtx.currentTextId + 1);
+
+            switch (play->msgCtx.currentTextId) {
+                case 0x04B0:
+                case 0x04B1:
+                    // Intro text
+                    Message_ContinueTextbox(play, play->msgCtx.currentTextId + 1);
+                    break;
+
+                case 0x04B2:
+                    // Quiz begins
+                    Animation_MorphToLoop(&this->skelAnime, &gKeatonIdleAnim, -5.0f);
+                    Message_ContinueTextbox(play, EnKitan_GetQuestionMessageId(this));
+                    break;
+
+                case 0x04B4:
+                    // Won the quiz
+                    Message_CloseTextbox(play);
+                    this->actionFunc = EnKitan_OfferPrize;
+                    EnKitan_OfferPrize(this, play);
+                    break;
+
+                case 0x04B3:
+                    // Answered a question incorrectly, stop
+                    SEQCMD_STOP_SEQUENCE(SEQ_PLAYER_FANFARE, 0);
+                    FALLTHROUGH;
+                case 0x04B5:
+                    // Keaton leaving
+                    Message_CloseTextbox(play);
+                    this->actionFunc = EnKitan_Leave;
+                    this->timer = 4;
+                    EnKitan_SpawnEffects(this, play, 30);
+                    SoundSource_PlaySfxAtFixedWorldPos(play, &this->actor.world.pos, 30, NA_SE_EN_NPC_FADEAWAY);
+                    Flags_SetCollectible(play, ENKITAN_GET_COLLECT_FLAG(&this->actor));
+                    break;
+
+                default:
+                    if ((play->msgCtx.currentTextId & 1)) {
+                        // Even-numbered textboxes are question textboxes
+                        // The following textbox contains the associated answer choices for this question
+                        Message_ContinueTextbox(play, CustomMsgID[storedValue + 1]);
+                    }
+                    break;
             }
-            
             break;
-    
+
+        default:
+            break;
     }
 }
 EZTR_ON_INIT void init_text() {

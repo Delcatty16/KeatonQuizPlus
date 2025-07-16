@@ -69,7 +69,7 @@ name = "Question Set"
 description = "What types of questions will appear when taking part in the Keaton Quiz."
 type = "Enum"
 options = [ "Vanilla", "Custom" ]
-default = "Vanilla"
+default = "Custom"
 
 [[manifest.config_options]]
 id = "KeatonQuizNumber"
@@ -94,10 +94,3 @@ step = 1
 precision = 1
 percent = false
 default = 6
-
-[[manifest.config_options]]
-id = "string_option"
-name = "String Option"
-description = "Test string config option."
-type = "String"
-default = "Lorem Ipsum"

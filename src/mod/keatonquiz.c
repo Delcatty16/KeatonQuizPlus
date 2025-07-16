@@ -90,7 +90,7 @@ RECOMP_PATCH u16 EnKitan_GetQuestionMessageId(EnKitan* this) {
 
     if (recomp_get_config_u32("QuestionSet") == 1) {
         storedQuestionSet = CustomMsgID;
-        numQuestionsInSet = 14.0f;
+        numQuestionsInSet = 30.0f;
     } else {
         storedQuestionSet = VanillaMsgID;
         numQuestionsInSet = 30.0f;
@@ -562,7 +562,7 @@ EZTR_ON_INIT void init_text() {
         "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Goht" EZTR_CC_NEWLINE "Gyorg" EZTR_CC_NEWLINE "Twinmold" EZTR_CC_END "",
         NULL
     );
-        EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion13),
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion13),
         EZTR_STANDARD_TEXT_BOX_II,
         0,
         EZTR_ICON_NO_ICON,
@@ -582,6 +582,358 @@ EZTR_ON_INIT void init_text() {
         EZTR_NO_VALUE,
         false,
         "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Ballad of the Sea" EZTR_CC_NEWLINE "Ballad of the Wind Fish" EZTR_CC_NEWLINE "Ballad of the Goddess" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion14),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What does " EZTR_CC_COLOR_RED "Cremia" EZTR_CC_COLOR_DEFAULT ", manager of" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_RED "Romani Ranch" EZTR_CC_COLOR_DEFAULT ", give you if you already" EZTR_CC_NEWLINE "have the" EZTR_CC_COLOR_RED " Romani Mask " EZTR_CC_COLOR_DEFAULT "and a" EZTR_CC_NEWLINE "full wallet?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomAnswer14),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "A firm handshake" EZTR_CC_NEWLINE "A sweet kiss" EZTR_CC_NEWLINE "A warm hug" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion15),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "How many " EZTR_CC_COLOR_RED "strikes" EZTR_CC_COLOR_DEFAULT " can the " EZTR_CC_COLOR_RED "Razor" EZTR_CC_NEWLINE "Sword " EZTR_CC_COLOR_DEFAULT "endure before its edges" EZTR_CC_NEWLINE "become dull and it revert back" EZTR_CC_NEWLINE "to the " EZTR_CC_COLOR_RED "Kokiri Sword" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomAnswer15),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0001,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "100" EZTR_CC_NEWLINE "200" EZTR_CC_NEWLINE "Its edges never dull" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion16),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "How many " EZTR_CC_COLOR_RED "Rupees" EZTR_CC_COLOR_DEFAULT " does the " EZTR_CC_COLOR_RED "Postman" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "charge to retry his " EZTR_CC_COLOR_RED "Mental Training" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "challenge?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomAnswer16),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0001,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "2 Rupees" EZTR_CC_NEWLINE "5 Rupees" EZTR_CC_NEWLINE "He doesn't charge anything" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion17),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "How many " EZTR_CC_COLOR_RED "Octorok" EZTR_CC_COLOR_DEFAULT " are required to" EZTR_CC_NEWLINE "be defeated in the " EZTR_CC_COLOR_RED "Town Shooting" EZTR_CC_NEWLINE "Gallery " EZTR_CC_COLOR_DEFAULT "for a " EZTR_CC_COLOR_RED "perfect" EZTR_CC_COLOR_DEFAULT " score?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomAnswer17),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0002,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "40" EZTR_CC_NEWLINE "50" EZTR_CC_NEWLINE "60" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion18),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "Who is " EZTR_CC_COLOR_RED "Tingle" EZTR_CC_COLOR_DEFAULT "'s father?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomAnswer18),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Mayor Dotour" EZTR_CC_NEWLINE "Swamp Shooting Gallery Guy" EZTR_CC_NEWLINE "Swamp Tourist Center Guide" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion19),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the name of the " EZTR_CC_COLOR_RED "little girl" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "who lives with her father in " EZTR_CC_COLOR_RED "Ikana" EZTR_CC_COLOR_DEFAULT "'s " EZTR_CC_NEWLINE "" EZTR_CC_COLOR_RED "Music Box House" EZTR_CC_COLOR_DEFAULT"?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomAnswer19),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Meg" EZTR_CC_NEWLINE "Joelle" EZTR_CC_NEWLINE "Pamela" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion20),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the name of the " EZTR_CC_COLOR_RED "red" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "Poe Sister?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomAnswer20),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0001,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Joelle" EZTR_CC_NEWLINE "Beth" EZTR_CC_NEWLINE "Amy" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion21),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the name of the " EZTR_CC_COLOR_RED "blue" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "Poe Sister?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomAnswer21),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0002,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Joelle" EZTR_CC_NEWLINE "Beth" EZTR_CC_NEWLINE "Amy" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion22),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the name of the " EZTR_CC_COLOR_RED "green" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "Poe Sister?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomAnswer22),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0002,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Beth" EZTR_CC_NEWLINE "Amy" EZTR_CC_NEWLINE "Meg" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion23),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the name of the " EZTR_CC_COLOR_RED "purple" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "Poe Sister?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomAnswer23),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Beth" EZTR_CC_NEWLINE "Amy" EZTR_CC_NEWLINE "Meg" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion24),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the name of the " EZTR_CC_COLOR_RED "song" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "that the " EZTR_CC_COLOR_RED "King of Ikana" EZTR_CC_COLOR_DEFAULT " teaches you?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomAnswer24),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0001,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Elegy of Emptiness" EZTR_CC_NEWLINE "Song of Storms" EZTR_CC_NEWLINE "Requiem of Spirit" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion25),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "How many " EZTR_CC_COLOR_RED "Stalchildren " EZTR_CC_COLOR_DEFAULT "are inside "EZTR_CC_NEWLINE "the " EZTR_CC_COLOR_RED "Oceanside Spider House" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomAnswer25),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0001,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Six" EZTR_CC_NEWLINE "Seven" EZTR_CC_NEWLINE "There are none" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion26),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "How many " EZTR_CC_COLOR_RED "Rupees " EZTR_CC_COLOR_DEFAULT "will the "EZTR_CC_NEWLINE "" EZTR_CC_COLOR_RED "Curiosity Shop Owner " EZTR_CC_COLOR_DEFAULT "offer in " EZTR_CC_NEWLINE "exchange for the " EZTR_CC_COLOR_RED "Deku Princess" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomAnswer26),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "50" EZTR_CC_NEWLINE "200" EZTR_CC_NEWLINE "He refuses to buy" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion27),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "How many " EZTR_CC_COLOR_RED "hearts " EZTR_CC_COLOR_DEFAULT "must you have "EZTR_CC_NEWLINE "to challenge " EZTR_CC_COLOR_RED "Wart " EZTR_CC_COLOR_DEFAULT "in Ikana's " EZTR_CC_NEWLINE "" EZTR_CC_COLOR_RED "Secret Shrine" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomAnswer27),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0002,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Eight" EZTR_CC_NEWLINE "Twelve" EZTR_CC_NEWLINE "Sixteen" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion28),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the " EZTR_CC_COLOR_RED "law " EZTR_CC_COLOR_DEFAULT "of the " EZTR_CC_COLOR_RED "Garo" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_RED "Die I shall," EZTR_CC_COLOR_DEFAULT " ...what?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomAnswer28),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0001,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Leaving no corpse" EZTR_CC_NEWLINE "Without any remorse" EZTR_CC_NEWLINE "But never forgotten" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion29),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the name of the " EZTR_CC_COLOR_RED "leader" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "of the " EZTR_CC_COLOR_RED "Gerudo Pirates" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        NULL
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(CustomAnswer29),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Nabooru" EZTR_CC_NEWLINE "Linebeck" EZTR_CC_NEWLINE "Aveil" EZTR_CC_END "",
         NULL
     );
     CustomMsgID[0] = EZTR_GET_ID_H(CustomQuestion0);
@@ -612,36 +964,36 @@ EZTR_ON_INIT void init_text() {
     CustomMsgID[25] = EZTR_GET_ID_H(CustomAnswer12);
     CustomMsgID[26] = EZTR_GET_ID_H(CustomQuestion13);
     CustomMsgID[27] = EZTR_GET_ID_H(CustomAnswer13);
-    // CustomMsgID[28] = EZTR_GET_ID_H(CustomQuestion14);
-    // CustomMsgID[29] = EZTR_GET_ID_H(CustomAnswer14);
-    // CustomMsgID[30] = EZTR_GET_ID_H(CustomQuestion15);
-    // CustomMsgID[31] = EZTR_GET_ID_H(CustomAnswer15);
-    // CustomMsgID[32] = EZTR_GET_ID_H(CustomQuestion16);
-    // CustomMsgID[33] = EZTR_GET_ID_H(CustomAnswer16);
-    // CustomMsgID[34] = EZTR_GET_ID_H(CustomQuestion17);
-    // CustomMsgID[35] = EZTR_GET_ID_H(CustomAnswer17);
-    // CustomMsgID[36] = EZTR_GET_ID_H(CustomQuestion18);
-    // CustomMsgID[37] = EZTR_GET_ID_H(CustomAnswer18);
-    // CustomMsgID[38] = EZTR_GET_ID_H(CustomQuestion19);
-    // CustomMsgID[39] = EZTR_GET_ID_H(CustomAnswer19);
-    // CustomMsgID[40] = EZTR_GET_ID_H(CustomQuestion20);
-    // CustomMsgID[41] = EZTR_GET_ID_H(CustomAnswer20);
-    // CustomMsgID[42] = EZTR_GET_ID_H(CustomQuestion21);
-    // CustomMsgID[43] = EZTR_GET_ID_H(CustomAnswer21);
-    // CustomMsgID[44] = EZTR_GET_ID_H(CustomQuestion22);
-    // CustomMsgID[45] = EZTR_GET_ID_H(CustomAnswer22);
-    // CustomMsgID[46] = EZTR_GET_ID_H(CustomQuestion23);
-    // CustomMsgID[47] = EZTR_GET_ID_H(CustomAnswer23);
-    // CustomMsgID[48] = EZTR_GET_ID_H(CustomQuestion24);
-    // CustomMsgID[49] = EZTR_GET_ID_H(CustomAnswer24);
-    // CustomMsgID[50] = EZTR_GET_ID_H(CustomQuestion25);
-    // CustomMsgID[51] = EZTR_GET_ID_H(CustomAnswer25);
-    // CustomMsgID[52] = EZTR_GET_ID_H(CustomQuestion26);
-    // CustomMsgID[53] = EZTR_GET_ID_H(CustomAnswer26);
-    // CustomMsgID[54] = EZTR_GET_ID_H(CustomQuestion27);
-    // CustomMsgID[55] = EZTR_GET_ID_H(CustomAnswer27);
-    // CustomMsgID[56] = EZTR_GET_ID_H(CustomQuestion28);
-    // CustomMsgID[57] = EZTR_GET_ID_H(CustomAnswer28);
-    // CustomMsgID[58] = EZTR_GET_ID_H(CustomQuestion29);
-    // CustomMsgID[59] = EZTR_GET_ID_H(CustomAnswer29);
+    CustomMsgID[28] = EZTR_GET_ID_H(CustomQuestion14);
+    CustomMsgID[29] = EZTR_GET_ID_H(CustomAnswer14);
+    CustomMsgID[30] = EZTR_GET_ID_H(CustomQuestion15);
+    CustomMsgID[31] = EZTR_GET_ID_H(CustomAnswer15);
+    CustomMsgID[32] = EZTR_GET_ID_H(CustomQuestion16);
+    CustomMsgID[33] = EZTR_GET_ID_H(CustomAnswer16);
+    CustomMsgID[34] = EZTR_GET_ID_H(CustomQuestion17);
+    CustomMsgID[35] = EZTR_GET_ID_H(CustomAnswer17);
+    CustomMsgID[36] = EZTR_GET_ID_H(CustomQuestion18);
+    CustomMsgID[37] = EZTR_GET_ID_H(CustomAnswer18);
+    CustomMsgID[38] = EZTR_GET_ID_H(CustomQuestion19);
+    CustomMsgID[39] = EZTR_GET_ID_H(CustomAnswer19);
+    CustomMsgID[40] = EZTR_GET_ID_H(CustomQuestion20);
+    CustomMsgID[41] = EZTR_GET_ID_H(CustomAnswer20);
+    CustomMsgID[42] = EZTR_GET_ID_H(CustomQuestion21);
+    CustomMsgID[43] = EZTR_GET_ID_H(CustomAnswer21);
+    CustomMsgID[44] = EZTR_GET_ID_H(CustomQuestion22);
+    CustomMsgID[45] = EZTR_GET_ID_H(CustomAnswer22);
+    CustomMsgID[46] = EZTR_GET_ID_H(CustomQuestion23);
+    CustomMsgID[47] = EZTR_GET_ID_H(CustomAnswer23);
+    CustomMsgID[48] = EZTR_GET_ID_H(CustomQuestion24);
+    CustomMsgID[49] = EZTR_GET_ID_H(CustomAnswer24);
+    CustomMsgID[50] = EZTR_GET_ID_H(CustomQuestion25);
+    CustomMsgID[51] = EZTR_GET_ID_H(CustomAnswer25);
+    CustomMsgID[52] = EZTR_GET_ID_H(CustomQuestion26);
+    CustomMsgID[53] = EZTR_GET_ID_H(CustomAnswer26);
+    CustomMsgID[54] = EZTR_GET_ID_H(CustomQuestion27);
+    CustomMsgID[55] = EZTR_GET_ID_H(CustomAnswer27);
+    CustomMsgID[56] = EZTR_GET_ID_H(CustomQuestion28);
+    CustomMsgID[57] = EZTR_GET_ID_H(CustomAnswer28);
+    CustomMsgID[58] = EZTR_GET_ID_H(CustomQuestion29);
+    CustomMsgID[59] = EZTR_GET_ID_H(CustomAnswer29);
 }

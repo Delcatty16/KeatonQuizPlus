@@ -16,11 +16,15 @@ display_name = "Keaton Quiz Plus"
 # The description that will show up when this mod is displayed in the mod menu. This should be human readable.
 description =  """
 Makes changes to the Keaton Quiz.
-You can select how many questsions are required to recieve the prize and select an alternative question set."""
+
+You can choose how fast Keaton will appear, how many questsions are required to recieve the prize and select an alternative set of questions.
+
+
+Thanks to LT_Schmiddy, ThatHypedPerson, magemods and Keanine for helping me various parts of the code!"""
 
 # A short description that will show up in this mod's entry in the mod list. This should be human readable and kept short
 # to prevent it from being cut off due to the limited space.
-short_description = "More Keaton Quiz Questions!"
+short_description = "Improvements to the Keaton Quiz!"
 
 # Authors of this mod.
 authors = [ "Delcatty16" ]

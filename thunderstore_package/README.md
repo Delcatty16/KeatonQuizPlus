@@ -1,0 +1,5 @@
+# Keaton Quiz Plus
+
+Makes changes to the Keaton Quiz.
+
+You can choose how fast Keaton will appear, how many questsions are required to recieve the prize and select an alternative set of questions.

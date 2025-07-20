@@ -8,7 +8,7 @@
 id = "keatonquizplusdelcatty16"
 
 # Version of this mod.
-version = "1.0.0"
+version = "1.0.1"
 
 # The name that will show up for this mod in the mod menu. This should be human readable.
 display_name = "Keaton Quiz Plus"
@@ -72,13 +72,23 @@ id = "QuestionSet"
 name = "Question Set"
 description = "What types of questions will appear when taking part in the Keaton Quiz."
 type = "Enum"
-options = [ "Vanilla", "Custom" ]
+options = [ "Vanilla", "Custom", "OoT" ]
 default = "Custom"
+
+[[manifest.config_options]]
+id = "HighlightColour"
+name = "Highlight Color"
+description = """What color the highlighted words will be during the Keaton Quiz.
+(Default is red)"""
+type = "Enum"
+options = [ "None", "Red", "Green", "Blue", "Yellow", "Cyan", "Pink", "Silver", "Orange" ]
+default = "Red"
 
 [[manifest.config_options]]
 id = "KeatonQuizNumber"
 name = "Number of Questions"
-description = "How many questions Keaton will ask before rewarding you with the prize."
+description = """How many questions Keaton will ask before rewarding you with the prize.
+(Default is 5)"""
 type = "Number"
 min = 1
 max = 30
@@ -90,7 +100,8 @@ default = 5
 [[manifest.config_options]]
 id = "KeatonAppearTimer"
 name = "Keaton Appearance Speed"
-description = "How long it takes in seconds for Keaton to appear after cutting the grass."
+description = """How long it takes in seconds for Keaton to appear after cutting the grass.
+(Default is 6)"""
 type = "Number"
 min = 0
 max = 6

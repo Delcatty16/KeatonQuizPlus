@@ -376,11 +376,14 @@ RECOMP_PATCH void EnKitan_Talk(EnKitan* this, PlayState* play) {
                 case 0x04B3:
                     // Answered a question incorrectly, stop
                     SEQCMD_STOP_SEQUENCE(SEQ_PLAYER_FANFARE, 0);
-                    // play->nextEntrance = ENTRANCE(TERMINA_FIELD, 12);
-                    // gSaveContext.nextCutsceneIndex = 0;
-                    // play->transitionTrigger = TRANS_TRIGGER_START;
-                    // play->transitionType = TRANS_TYPE_FADE_WHITE;
+                    if ((recomp_get_config_u32("CrashMoonOnFail") == 1)) {
+                        play->nextEntrance = ENTRANCE(TERMINA_FIELD, 12);
+                        gSaveContext.nextCutsceneIndex = 0;
+                        play->transitionTrigger = TRANS_TRIGGER_START;
+                        play->transitionType = TRANS_TYPE_FADE_WHITE;
                         //Causes a moon crash upon getting a question wrong
+                    }
+                    else;
                     FALLTHROUGH;
                 case 0x04B5:
                     // Keaton leaving

@@ -109,3 +109,11 @@ step = 1
 precision = 1
 percent = false
 default = 6
+
+[[manifest.config_options]]
+id = "CrashMoonOnFail"
+name = "Moon Crash on Fail"
+description = "Turning this on will cause the moon to crash and reset the cycle if you answer any question incorrectly."
+type = "Enum"
+options = [ "No", "Yes" ]
+default = "No"

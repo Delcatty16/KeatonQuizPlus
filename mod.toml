@@ -8,7 +8,7 @@
 id = "keatonquizplusdelcatty16"
 
 # Version of this mod.
-version = "1.0.1"
+version = "1.1.0"
 
 # The name that will show up for this mod in the mod menu. This should be human readable.
 display_name = "Keaton Quiz Plus"
@@ -17,7 +17,11 @@ display_name = "Keaton Quiz Plus"
 description =  """
 Makes changes to the Keaton Quiz.
 
-You can choose how fast Keaton will appear, how many questions are required to receive the prize and select an alternative set of questions.
+You can choose how fast Keaton will appear.
+How many questions are required to receive the prize
+Choose between the vanilla set of questions or alternative sets of questions based on Majora's Mask(Custom) and Ocarina of Time(OoT).
+Option to change the color of the highlighted words during the quiz.
+Option to toggle causing a Moon Crash upon getting a question wrong.
 
 
 Thanks to LT_Schmiddy, ThatHypedPerson, magemods and Keanine for helping me various parts of the code!"""
@@ -70,7 +74,13 @@ additional_files = [ "thumb.png" ]
 [[manifest.config_options]]
 id = "QuestionSet"
 name = "Question Set"
-description = "What types of questions will appear when taking part in the Keaton Quiz."
+description = """
+What types of questions will appear when taking part in the Keaton Quiz.
+
+Vanilla - The original questions and answers from Majora's Mask.
+Custom - A set of 30 additional questions based on Majora's Mask.
+OoT - A set of 30 additional questions based on Ocarina of Time.
+"""
 type = "Enum"
 options = [ "Vanilla", "Custom", "OoT" ]
 default = "Custom"

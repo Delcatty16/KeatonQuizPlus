@@ -34,9 +34,10 @@ EZTR_MSG_CALLBACK(quiz_color_changer) {
 //    return 0x4BA;
 //}
 enum QuestionSetOptions {
-    QUESTION_SET_VANILLA, // 0
-    QUESTION_SET_CUSTOM,  // 1
-    QUESTION_SET_OOT,     // 2
+    QUESTION_SET_VANILLA,   // 0
+    QUESTION_SET_CUSTOM,    // 1
+    QUESTION_SET_OOT,       // 2
+    QUESTION_SET_PICTURES,  // 3
 };
 EZTR_DEFINE_CUSTOM_MSG_HANDLE(CustomQuestion0);
 EZTR_DEFINE_CUSTOM_MSG_HANDLE(CustomAnswer0);
@@ -158,10 +159,71 @@ EZTR_DEFINE_CUSTOM_MSG_HANDLE(OoTQuestion28);
 EZTR_DEFINE_CUSTOM_MSG_HANDLE(OoTAnswer28);
 EZTR_DEFINE_CUSTOM_MSG_HANDLE(OoTQuestion29);
 EZTR_DEFINE_CUSTOM_MSG_HANDLE(OoTAnswer29);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion0);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer0);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion1);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer1);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion2);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer2);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion3);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer3);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion4);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer4);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion5);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer5);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion6);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer6);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion7);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer7);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion8);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer8);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion9);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer9);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion10);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer10);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion11);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer11);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion12);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer12);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion13);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer13);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion14);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer14);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion15);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer15);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion16);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer16);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion17);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer17);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion18);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer18);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion19);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer19);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion20);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer20);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion21);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer21);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion22);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer22);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion23);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer23);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion24);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer24);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion25);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer25);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion26);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer26);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion27);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer27);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion28);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer28);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesQuestion29);
+EZTR_DEFINE_CUSTOM_MSG_HANDLE(PicturesAnswer29);
 
 u16 CustomMsgID[60] = {0};
 u16 VanillaMsgID[60] ={0x04B6, 0x04B7, 0x04B8, 0x04B9, 0x04BA, 0x04BB, 0x04BC, 0x04BD, 0x04BE, 0x04BF, 0x04C0, 0x04C1, 0x04C2, 0x04C3, 0x04C4, 0x04C5, 0x04C6, 0x04C7, 0x04C8, 0x04C9, 0x04CA, 0x04CB, 0x04CC, 0x04CD, 0x04CE, 0x04CF, 0x04D0, 0x04D1, 0x04D2, 0x04D3, 0x04D4, 0x04D5, 0x04D6, 0x04D7, 0x04D8, 0x04D9, 0x04DA, 0x04DB, 0x04DC, 0x04DD, 0x04DE, 0x04DF, 0x04E0, 0x04E1, 0x04E2, 0x04E3, 0x04E4, 0x04E5, 0x04E6, 0x04E7, 0x04E8, 0x04E9, 0x04EA, 0x04EB, 0x04EC, 0x04ED, 0x04EE, 0x04EF, 0x04F0, 0x04F1};
 u16 OoTMsgID[60] = {0};
+u16 PicturesMsgID[60] = {0};
 u16* storedQuestionSet;
 u32 storedValue;
 
@@ -183,6 +245,10 @@ RECOMP_PATCH u16 EnKitan_GetQuestionMessageId(EnKitan* this) {
         break;
         case QUESTION_SET_OOT:
             storedQuestionSet = OoTMsgID;
+            numQuestionsInSet = 30.0f;
+        break;
+        case QUESTION_SET_PICTURES:
+            storedQuestionSet = PicturesMsgID;
             numQuestionsInSet = 30.0f;
         break;
     }   //Grabs the value of the setting in the config to determine what set of questions to call
@@ -255,6 +321,9 @@ RECOMP_PATCH void EnKitan_WaitForPlayer(EnKitan* this, PlayState* play) {
         break;
         case QUESTION_SET_OOT:
             Audio_PlayFanfare(NA_BGM_OWL);
+        break;
+        case QUESTION_SET_PICTURES:
+            Audio_PlayFanfare(NA_BGM_KEATON_QUIZ);
         break;
     } // Uses the config setting for the question set and uses that to determine what song to use during the quiz
         
@@ -408,7 +477,30 @@ RECOMP_PATCH void EnKitan_Talk(EnKitan* this, PlayState* play) {
             break;
     }
 }
+EZTR_MSG_CALLBACK(kitanInWrongLocation) {
+    if (play->sceneId != SCENE_BACKTOWN && play->sceneId != SCENE_ROMANYMAE && play->sceneId != SCENE_10YUKIYAMANOMURA2) {
+        buf->data.text_box_type = EZTR_STANDARD_TEXT_BOX_I,
+        EZTR_MsgSContent_Sprintf(buf->data.content, "Hee-hee-ho! Hello...?" EZTR_CC_NEWLINE "Where am I...?" EZTR_CC_NEWLINE "I'm not supposed to be here..." EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "Anyway... Hee-hee-ho! Hello, child." EZTR_CC_NEWLINE "If you are attempting to fool me," EZTR_CC_NEWLINE "it is impossible." EZTR_CC_EVENT "" EZTR_CC_END "");
+    } else {
+        // Vanilla Dialogue:
+        EZTR_MsgSContent_Sprintf(buf->data.content, "Hee-hee-ho! Hello, child." EZTR_CC_NEWLINE "If you are attempting to fool me," EZTR_CC_NEWLINE "it is impossible." EZTR_CC_EVENT "" EZTR_CC_END "");
+    }
+}
+ 
 EZTR_ON_INIT void init_text() {
+    // Replacements for Keaton Intro Text
+    EZTR_Basic_ReplaceText(
+        0x04B0,
+        EZTR_STANDARD_TEXT_BOX_I,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "\xBF",
+        kitanInWrongLocation
+    );
     //Vanilla Questions
         EZTR_Basic_ReplaceText(
         0x04B6,
@@ -2229,4 +2321,733 @@ EZTR_ON_INIT void init_text() {
     OoTMsgID[57] = EZTR_GET_ID_H(OoTAnswer28);
     OoTMsgID[58] = EZTR_GET_ID_H(OoTQuestion29);
     OoTMsgID[59] = EZTR_GET_ID_H(OoTAnswer29);
+    // Pictures Questions
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion0),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "How many " VARIABLE_TEXT_COLOR "cucco" EZTR_CC_COLOR_DEFAULT " are in" VARIABLE_TEXT_COLOR "" EZTR_CC_NEWLINE "Kakariko Village" EZTR_CC_COLOR_DEFAULT " as a child?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer0),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0002,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Six" EZTR_CC_NEWLINE "Seven" EZTR_CC_NEWLINE "Eight" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion1),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "Throughout all of " VARIABLE_TEXT_COLOR "Hyrule" EZTR_CC_COLOR_DEFAULT "," EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "how many " VARIABLE_TEXT_COLOR "Gold Skulltulas " EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "are there in total?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer1),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0002,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "50" EZTR_CC_NEWLINE "100" EZTR_CC_NEWLINE "120" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion2),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is " VARIABLE_TEXT_COLOR "Damp\x9D" EZTR_CC_COLOR_DEFAULT ", Kakariko Village's"  EZTR_CC_NEWLINE "Gravekeeper afraid of?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer2),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Ghosts" EZTR_CC_NEWLINE "The dark" EZTR_CC_NEWLINE "Rabbits" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion3),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "How many " VARIABLE_TEXT_COLOR "Great Fairies" EZTR_CC_COLOR_DEFAULT " are in " EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "Hyrule"  EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer3),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Four" EZTR_CC_NEWLINE "Five" EZTR_CC_NEWLINE "Six" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion4),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What " VARIABLE_TEXT_COLOR "song" EZTR_CC_COLOR_DEFAULT " is taught to you by" EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "Shiek" EZTR_CC_COLOR_DEFAULT " inside " VARIABLE_TEXT_COLOR "Death Mountain Crater" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer4),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0002,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Nocturne of Fire" EZTR_CC_NEWLINE "Bolero of Fire" EZTR_CC_NEWLINE "Minuet of Fire" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion5),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "We " VARIABLE_TEXT_COLOR "Keaton" EZTR_CC_COLOR_DEFAULT " are popular with" EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "children " EZTR_CC_COLOR_DEFAULT "in " VARIABLE_TEXT_COLOR "Hyrule" EZTR_CC_COLOR_DEFAULT"." EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "Who " EZTR_CC_COLOR_DEFAULT "will buy our Mask from you?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer5),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0001,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Kakariko Village Gate Guard" EZTR_CC_NEWLINE "Castle Town Gate Guard" EZTR_CC_NEWLINE "Hyrule Castle Gate Guard" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion6),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What " VARIABLE_TEXT_COLOR "instrument" EZTR_CC_COLOR_DEFAULT " does " VARIABLE_TEXT_COLOR "Shiek " EZTR_CC_COLOR_DEFAULT "of the" EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "Shiekah" EZTR_CC_COLOR_DEFAULT" play?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer6),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Grass whistle" EZTR_CC_NEWLINE "Ocarina" EZTR_CC_NEWLINE "Harp" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion7),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the " VARIABLE_TEXT_COLOR "name" EZTR_CC_COLOR_DEFAULT " of the " EZTR_CC_NEWLINE "leader of the" VARIABLE_TEXT_COLOR " Kokiri" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer7),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0002,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Fado" EZTR_CC_NEWLINE "Mido" EZTR_CC_NEWLINE "Bedo" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion8),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the " VARIABLE_TEXT_COLOR "weapon" EZTR_CC_COLOR_DEFAULT " of choice for " EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "Iron Knuckles" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer8),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Scythe" EZTR_CC_NEWLINE "Sword and shield" EZTR_CC_NEWLINE "Battle-axe" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion9),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the " VARIABLE_TEXT_COLOR "weapon" EZTR_CC_COLOR_DEFAULT " of choice for " EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "Stalfos" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer9),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0002,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Scythe" EZTR_CC_NEWLINE "Sword and shield" EZTR_CC_NEWLINE "Battle-axe" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion10),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "Who is the " VARIABLE_TEXT_COLOR "Sage" EZTR_CC_COLOR_DEFAULT " of " VARIABLE_TEXT_COLOR "Fire" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer10),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Saria" EZTR_CC_NEWLINE "Darmani" EZTR_CC_NEWLINE "Darunia" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion11),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "Who is the " VARIABLE_TEXT_COLOR "sage" EZTR_CC_COLOR_DEFAULT " of " VARIABLE_TEXT_COLOR "Water" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer11),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0002,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Mipha" EZTR_CC_NEWLINE "Ruto" EZTR_CC_NEWLINE "Lulu" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion12),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "Who is the " VARIABLE_TEXT_COLOR "sage" EZTR_CC_COLOR_DEFAULT " of " VARIABLE_TEXT_COLOR "Shadow" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer12),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Impaz" EZTR_CC_NEWLINE "Sheik" EZTR_CC_NEWLINE "Impa" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion13),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the name of the " VARIABLE_TEXT_COLOR "song" EZTR_CC_NEWLINE "Sheik" EZTR_CC_COLOR_DEFAULT " of the Sheikah teaches " EZTR_CC_NEWLINE "you in " VARIABLE_TEXT_COLOR "Kakariko Village" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer13),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0002,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Nocturne of the Dead" EZTR_CC_NEWLINE "Nocturne of Shadow" EZTR_CC_NEWLINE "Nocturne of Sorrow" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion14),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What happens when you play " EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "Song of Storms" EZTR_CC_COLOR_DEFAULT " in front of a" EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "Gossip Stone" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer14),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "It spins around" EZTR_CC_NEWLINE "It speaks to you" EZTR_CC_NEWLINE "It spawns a Big Fairy" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion15),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What can you find in the " VARIABLE_TEXT_COLOR "" EZTR_CC_NEWLINE "center " EZTR_CC_COLOR_DEFAULT "of the maze inside the " EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "Gerudo Training Grounds" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer15),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0001,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Ice Arrow" EZTR_CC_NEWLINE "Iron BPicturess" EZTR_CC_NEWLINE "Gerudo Membership Card" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion16),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "Where does the " VARIABLE_TEXT_COLOR "Cucco Lady" EZTR_CC_COLOR_DEFAULT " go" EZTR_CC_NEWLINE "to study how to breed " EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "pocket-sized Cuccos" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer16),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0001,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Lakeside Laboratory" EZTR_CC_NEWLINE "Hyrule Market" EZTR_CC_NEWLINE "Lon Lon Ranch" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion17),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "Contrary to her elegant image," EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "Princess Zelda" EZTR_CC_COLOR_DEFAULT " is in fact, what?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer17),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0002,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "A strict ruler" EZTR_CC_NEWLINE "A tomboy" EZTR_CC_NEWLINE "Hot-headed" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion18),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "Who is " VARIABLE_TEXT_COLOR "Malon" EZTR_CC_COLOR_DEFAULT "'s father?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer18),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Ingo" EZTR_CC_NEWLINE "Muto" EZTR_CC_NEWLINE "Talon" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion19),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What does the " VARIABLE_TEXT_COLOR "Kokiri " EZTR_CC_COLOR_DEFAULT "with blonde" EZTR_CC_NEWLINE "hair in the " VARIABLE_TEXT_COLOR "Lost Woods" EZTR_CC_COLOR_DEFAULT " give you in" EZTR_CC_NEWLINE "exchange for the " VARIABLE_TEXT_COLOR "Odd Potion" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer19),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Broken Goron Sword" EZTR_CC_NEWLINE "Blue Potion" EZTR_CC_NEWLINE "Poacher's Saw" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion20),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the name of the " VARIABLE_TEXT_COLOR "red" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "Poe Sister?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer20),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0001,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Joelle" EZTR_CC_NEWLINE "Meg" EZTR_CC_NEWLINE "Beth" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion21),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the name of the " VARIABLE_TEXT_COLOR "blue" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "Poe Sister?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer21),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0002,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Meg" EZTR_CC_NEWLINE "Beth" EZTR_CC_NEWLINE "Amy" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion22),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the name of the " VARIABLE_TEXT_COLOR "green" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "Poe Sister?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer22),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0002,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Beth" EZTR_CC_NEWLINE "Amy" EZTR_CC_NEWLINE "Joelle" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion23),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the name of the " VARIABLE_TEXT_COLOR "purple" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "Poe Sister?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer23),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Joelle" EZTR_CC_NEWLINE "Amy" EZTR_CC_NEWLINE "Meg" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion24),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What do the " VARIABLE_TEXT_COLOR "Gerudo women" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "look for when they visit " VARIABLE_TEXT_COLOR "Hyrule" EZTR_CC_NEWLINE "Castle Town" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer24),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0001,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Boyfriends" EZTR_CC_NEWLINE "Weapons and armor" EZTR_CC_NEWLINE "Horses" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion25),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "Defeating multiple " VARIABLE_TEXT_COLOR "Stalchildren " EZTR_CC_COLOR_DEFAULT "and " VARIABLE_TEXT_COLOR "" EZTR_CC_NEWLINE "Guays" EZTR_CC_COLOR_DEFAULT " causes big variants to appear." EZTR_CC_NEWLINE "What other enemy can do this?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer25),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0001,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Leever" EZTR_CC_NEWLINE "Keese" EZTR_CC_NEWLINE "There are none" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion26),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What item of " VARIABLE_TEXT_COLOR "clothing " EZTR_CC_COLOR_DEFAULT "is against the "EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "rules " EZTR_CC_COLOR_DEFAULT "in the " VARIABLE_TEXT_COLOR "Treasure Chest Shop" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer26),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Heavy bPicturess" EZTR_CC_NEWLINE "Gauntlets" EZTR_CC_NEWLINE "Glasses" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion27),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the small " VARIABLE_TEXT_COLOR "animal " EZTR_CC_COLOR_DEFAULT "that "EZTR_CC_NEWLINE "the " VARIABLE_TEXT_COLOR "Potion Lady " EZTR_CC_COLOR_DEFAULT "keeps on her desk?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer27),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0002,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Dog" EZTR_CC_NEWLINE "Tiger" EZTR_CC_NEWLINE "Cucco" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion28),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "How did" VARIABLE_TEXT_COLOR " Damp\x9D" EZTR_CC_COLOR_DEFAULT ", Kakariko Village's"  EZTR_CC_NEWLINE "Gravekeeper, obtain the" VARIABLE_TEXT_COLOR " Hookshot" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer28),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0001,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Digging a hole" EZTR_CC_NEWLINE "Inside a grave" EZTR_CC_NEWLINE "Gift from a friend" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesQuestion29),
+        EZTR_STANDARD_TEXT_BOX_II,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the " VARIABLE_TEXT_COLOR "Zora's Sapphire" EZTR_CC_COLOR_DEFAULT " used " EZTR_CC_NEWLINE "for by Zora royalty?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    EZTR_Basic_AddCustomText(EZTR_HNAME(PicturesAnswer29),
+        EZTR_STANDARD_TEXT_BOX_II,
+        1,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        0x0003,
+        EZTR_NO_VALUE,
+        false,
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Water powers" EZTR_CC_NEWLINE "Proof of royalty" EZTR_CC_NEWLINE "Engagement ring" EZTR_CC_END "",
+        quiz_color_changer
+    );
+    PicturesMsgID[0] = EZTR_GET_ID_H(PicturesQuestion0);
+    PicturesMsgID[1] = EZTR_GET_ID_H(PicturesAnswer0);
+    PicturesMsgID[2] = EZTR_GET_ID_H(PicturesQuestion1);
+    PicturesMsgID[3] = EZTR_GET_ID_H(PicturesAnswer1);
+    PicturesMsgID[4] = EZTR_GET_ID_H(PicturesQuestion2);
+    PicturesMsgID[5] = EZTR_GET_ID_H(PicturesAnswer2);
+    PicturesMsgID[6] = EZTR_GET_ID_H(PicturesQuestion3);
+    PicturesMsgID[7] = EZTR_GET_ID_H(PicturesAnswer3);
+    PicturesMsgID[8] = EZTR_GET_ID_H(PicturesQuestion4);
+    PicturesMsgID[9] = EZTR_GET_ID_H(PicturesAnswer4);
+    PicturesMsgID[10] = EZTR_GET_ID_H(PicturesQuestion5);
+    PicturesMsgID[11] = EZTR_GET_ID_H(PicturesAnswer5);
+    PicturesMsgID[12] = EZTR_GET_ID_H(PicturesQuestion6);
+    PicturesMsgID[13] = EZTR_GET_ID_H(PicturesAnswer6);
+    PicturesMsgID[14] = EZTR_GET_ID_H(PicturesQuestion7);
+    PicturesMsgID[15] = EZTR_GET_ID_H(PicturesAnswer7);
+    PicturesMsgID[16] = EZTR_GET_ID_H(PicturesQuestion8);
+    PicturesMsgID[17] = EZTR_GET_ID_H(PicturesAnswer8);
+    PicturesMsgID[18] = EZTR_GET_ID_H(PicturesQuestion9);
+    PicturesMsgID[19] = EZTR_GET_ID_H(PicturesAnswer9);
+    PicturesMsgID[20] = EZTR_GET_ID_H(PicturesQuestion10);
+    PicturesMsgID[21] = EZTR_GET_ID_H(PicturesAnswer10);
+    PicturesMsgID[22] = EZTR_GET_ID_H(PicturesQuestion11);
+    PicturesMsgID[23] = EZTR_GET_ID_H(PicturesAnswer11);
+    PicturesMsgID[24] = EZTR_GET_ID_H(PicturesQuestion12);
+    PicturesMsgID[25] = EZTR_GET_ID_H(PicturesAnswer12);
+    PicturesMsgID[26] = EZTR_GET_ID_H(PicturesQuestion13);
+    PicturesMsgID[27] = EZTR_GET_ID_H(PicturesAnswer13);
+    PicturesMsgID[28] = EZTR_GET_ID_H(PicturesQuestion14);
+    PicturesMsgID[29] = EZTR_GET_ID_H(PicturesAnswer14);
+    PicturesMsgID[30] = EZTR_GET_ID_H(PicturesQuestion15);
+    PicturesMsgID[31] = EZTR_GET_ID_H(PicturesAnswer15);
+    PicturesMsgID[32] = EZTR_GET_ID_H(PicturesQuestion16);
+    PicturesMsgID[33] = EZTR_GET_ID_H(PicturesAnswer16);
+    PicturesMsgID[34] = EZTR_GET_ID_H(PicturesQuestion17);
+    PicturesMsgID[35] = EZTR_GET_ID_H(PicturesAnswer17);
+    PicturesMsgID[36] = EZTR_GET_ID_H(PicturesQuestion18);
+    PicturesMsgID[37] = EZTR_GET_ID_H(PicturesAnswer18);
+    PicturesMsgID[38] = EZTR_GET_ID_H(PicturesQuestion19);
+    PicturesMsgID[39] = EZTR_GET_ID_H(PicturesAnswer19);
+    PicturesMsgID[40] = EZTR_GET_ID_H(PicturesQuestion20);
+    PicturesMsgID[41] = EZTR_GET_ID_H(PicturesAnswer20);
+    PicturesMsgID[42] = EZTR_GET_ID_H(PicturesQuestion21);
+    PicturesMsgID[43] = EZTR_GET_ID_H(PicturesAnswer21);
+    PicturesMsgID[44] = EZTR_GET_ID_H(PicturesQuestion22);
+    PicturesMsgID[45] = EZTR_GET_ID_H(PicturesAnswer22);
+    PicturesMsgID[46] = EZTR_GET_ID_H(PicturesQuestion23);
+    PicturesMsgID[47] = EZTR_GET_ID_H(PicturesAnswer23);
+    PicturesMsgID[48] = EZTR_GET_ID_H(PicturesQuestion24);
+    PicturesMsgID[49] = EZTR_GET_ID_H(PicturesAnswer24);
+    PicturesMsgID[50] = EZTR_GET_ID_H(PicturesQuestion25);
+    PicturesMsgID[51] = EZTR_GET_ID_H(PicturesAnswer25);
+    PicturesMsgID[52] = EZTR_GET_ID_H(PicturesQuestion26);
+    PicturesMsgID[53] = EZTR_GET_ID_H(PicturesAnswer26);
+    PicturesMsgID[54] = EZTR_GET_ID_H(PicturesQuestion27);
+    PicturesMsgID[55] = EZTR_GET_ID_H(PicturesAnswer27);
+    PicturesMsgID[56] = EZTR_GET_ID_H(PicturesQuestion28);
+    PicturesMsgID[57] = EZTR_GET_ID_H(PicturesAnswer28);
+    PicturesMsgID[58] = EZTR_GET_ID_H(PicturesQuestion29);
+    PicturesMsgID[59] = EZTR_GET_ID_H(PicturesAnswer29);
 }

@@ -8,7 +8,7 @@
 id = "keatonquizplusdelcatty16"
 
 # Version of this mod.
-version = "1.1.0"
+version = "1.2.0"
 
 # The name that will show up for this mod in the mod menu. This should be human readable.
 display_name = "Keaton Quiz Plus"
@@ -80,9 +80,10 @@ What types of questions will appear when taking part in the Keaton Quiz.
 Vanilla - The original questions and answers from Majora's Mask.
 Custom - A set of 30 additional questions based on Majora's Mask.
 OoT - A set of 30 additional questions based on Ocarina of Time.
+Pictures - A set of 30 questions using pictures of people, masks or items.
 """
 type = "Enum"
-options = [ "Vanilla", "Custom", "OoT" ]
+options = [ "Vanilla", "Custom", "OoT", "Pictures" ]
 default = "Custom"
 
 [[manifest.config_options]]

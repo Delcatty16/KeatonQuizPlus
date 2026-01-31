@@ -480,7 +480,7 @@ RECOMP_PATCH void EnKitan_Talk(EnKitan* this, PlayState* play) {
 EZTR_MSG_CALLBACK(kitanInWrongLocation) {
     if (play->sceneId != SCENE_BACKTOWN && play->sceneId != SCENE_ROMANYMAE && play->sceneId != SCENE_10YUKIYAMANOMURA2) {
         buf->data.text_box_type = EZTR_STANDARD_TEXT_BOX_I,
-        EZTR_MsgSContent_Sprintf(buf->data.content, "Hee-hee-ho! Hello...?" EZTR_CC_NEWLINE "Where am I...?" EZTR_CC_NEWLINE "I'm not supposed to be here..." EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "Anyway... Hee-hee-ho! Hello, child." EZTR_CC_NEWLINE "If you are attempting to fool me," EZTR_CC_NEWLINE "it is impossible." EZTR_CC_EVENT "" EZTR_CC_END "");
+        EZTR_MsgSContent_Sprintf(buf->data.content, "Hee-hee-ho! Hello...?" EZTR_CC_NEWLINE "Where am I...?" EZTR_CC_NEWLINE "I'm not supposed to be here..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "Anyway... Hee-hee-ho! Hello, child." EZTR_CC_NEWLINE "If you are attempting to fool me," EZTR_CC_NEWLINE "it is impossible." EZTR_CC_EVENT "" EZTR_CC_END "");
     } else {
         // Vanilla Dialogue:
         EZTR_MsgSContent_Sprintf(buf->data.content, "Hee-hee-ho! Hello, child." EZTR_CC_NEWLINE "If you are attempting to fool me," EZTR_CC_NEWLINE "it is impossible." EZTR_CC_EVENT "" EZTR_CC_END "");

@@ -4,7 +4,9 @@
 #include "recompconfig.h"
 #include "eztr_api.h"
 #include "overlays/actors/ovl_En_Kitan/z_en_kitan.h"
-
+#include "overlays/actors/ovl_En_Kusa2/z_en_kusa2.h"
+#include "z64actor.h"
+#include "attributes.h"
 #define VARIABLE_TEXT_COLOR "\xff"
 
 EZTR_MSG_CALLBACK(quiz_color_changer) {
@@ -19,7 +21,9 @@ EZTR_MSG_CALLBACK(quiz_color_changer) {
     }
 }
 
-
+void kitanSendDeath() {
+    gSaveContext.save.saveInfo.playerData.health = 0;
+}
 
 //RECOMP_PATCH u16 EnKitan_GetQuestionMessageId(EnKitan* this) {
     // always return the "romani balloon" question
@@ -226,6 +230,7 @@ u16 OoTMsgID[60] = {0};
 u16 PicturesMsgID[60] = {0};
 u16* storedQuestionSet;
 u32 storedValue;
+u16 checkKitanRequirement;
 
 
 
@@ -329,15 +334,25 @@ RECOMP_PATCH void EnKitan_WaitForPlayer(EnKitan* this, PlayState* play) {
         
         return;
     }
-
-    if ((this->timer <= 0) || (Player_GetMask(play) != PLAYER_MASK_KEATON)) {
-        // If the player does not talk quickly enough or the player isn't wearing the keaton mask, leave
-        this->actionFunc = EnKitan_Leave;
-        this->timer = 4;
-        EnKitan_SpawnEffects(this, play, 30);
-        SoundSource_PlaySfxAtFixedWorldPos(play, &this->actor.world.pos, 30, NA_SE_EN_NPC_FADEAWAY);
-        return;
+    switch (recomp_get_config_u32("RequireKeatonMaskEquipped")) {
+        case 0:
+        default:
+            checkKitanRequirement = (Player_GetMask(play) != PLAYER_MASK_KEATON);
+            break;
+        case 1:
+            checkKitanRequirement = (INV_CONTENT(ITEM_MASK_KEATON) != ITEM_MASK_KEATON);
+            break;
     }
+    
+    if ((this->timer <= 0) || checkKitanRequirement) {
+    // If the player does not talk quickly enough or the player isn't wearing or owns the keaton mask, leave
+    this->actionFunc = EnKitan_Leave;
+    this->timer = 4;
+    EnKitan_SpawnEffects(this, play, 30);
+    SoundSource_PlaySfxAtFixedWorldPos(play, &this->actor.world.pos, 30, NA_SE_EN_NPC_FADEAWAY);
+    return;
+    }
+
 
     if (EnKitan_CanTalk(this, play)) {
         // Broadcast talk request for the player to accept
@@ -365,8 +380,16 @@ RECOMP_PATCH void EnKitan_Init(Actor* thisx, PlayState* play) {
     this->actor.velocity.y = -9.0f;
     this->actor.terminalVelocity = -9.0f;
     this->actor.gravity = -1.0f;
-
-    if ((Player_GetMask(play) != PLAYER_MASK_KEATON) ||
+    switch (recomp_get_config_u32("RequireKeatonMaskEquipped")) {
+        case 0:
+        default:
+            checkKitanRequirement = (Player_GetMask(play) != PLAYER_MASK_KEATON);
+            break;
+        case 1:
+            checkKitanRequirement = (INV_CONTENT(ITEM_MASK_KEATON) != ITEM_MASK_KEATON);
+            break;
+    }
+    if (checkKitanRequirement ||
         Flags_GetCollectible(play, ENKITAN_GET_COLLECT_FLAG(&this->actor))) {
         Actor_Kill(&this->actor);
         return;
@@ -444,12 +467,16 @@ RECOMP_PATCH void EnKitan_Talk(EnKitan* this, PlayState* play) {
                 case 0x04B3:
                     // Answered a question incorrectly, stop
                     SEQCMD_STOP_SEQUENCE(SEQ_PLAYER_FANFARE, 0);
-                    if ((recomp_get_config_u32("CrashMoonOnFail") == 1)) {
+                    if ((recomp_get_config_u32("CrashMoonOnFail") == 2)) {
                         play->nextEntrance = ENTRANCE(TERMINA_FIELD, 12);
                         gSaveContext.nextCutsceneIndex = 0;
                         play->transitionTrigger = TRANS_TRIGGER_START;
                         play->transitionType = TRANS_TYPE_FADE_WHITE;
                         //Causes a moon crash upon getting a question wrong
+                    }
+                    else if ((recomp_get_config_u32("CrashMoonOnFail") == 1)) {
+                        kitanSendDeath();
+                        //set health to 0 when getting a question wrong
                     }
                     else;
                     FALLTHROUGH;
@@ -477,16 +504,78 @@ RECOMP_PATCH void EnKitan_Talk(EnKitan* this, PlayState* play) {
             break;
     }
 }
+// make this include the a check if mask is worn or not
 EZTR_MSG_CALLBACK(kitanInWrongLocation) {
-    if (play->sceneId != SCENE_BACKTOWN && play->sceneId != SCENE_ROMANYMAE && play->sceneId != SCENE_10YUKIYAMANOMURA2) {
+    if (Player_GetMask(play) == PLAYER_MASK_KEATON){
+        if (play->sceneId != SCENE_BACKTOWN && play->sceneId != SCENE_ROMANYMAE && play->sceneId != SCENE_10YUKIYAMANOMURA2) {
+            buf->data.text_box_type = EZTR_STANDARD_TEXT_BOX_I,
+            EZTR_MsgSContent_Sprintf(buf->data.content, "Hee-hee-ho! Hello...?" EZTR_CC_NEWLINE "Where am I...?" EZTR_CC_NEWLINE "I'm not supposed to be here..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "Anyway... Hee-hee-ho! Hello, child." EZTR_CC_NEWLINE "If you are attempting to fool me," EZTR_CC_NEWLINE "it is impossible." EZTR_CC_EVENT "" EZTR_CC_END "");
+        } else  {
+            // Vanilla Dialogue:
+            EZTR_MsgSContent_Sprintf(buf->data.content, "Hee-hee-ho! Hello, child." EZTR_CC_NEWLINE "If you are attempting to fool me," EZTR_CC_NEWLINE "it is impossible." EZTR_CC_EVENT "" EZTR_CC_END "");
+        }
+    }
+    else {
+        if (play->sceneId != SCENE_BACKTOWN && play->sceneId != SCENE_ROMANYMAE && play->sceneId != SCENE_10YUKIYAMANOMURA2) {
+            buf->data.text_box_type = EZTR_STANDARD_TEXT_BOX_I,
+            EZTR_MsgSContent_Sprintf(buf->data.content, "Hee-hee-ho! Hello...?" EZTR_CC_NEWLINE "Where am I...?" EZTR_CC_NEWLINE "I'm not supposed to be here..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "Anyway... Hee-hee-ho! Hello, child." EZTR_CC_NEWLINE "I see you possess our mask," EZTR_CC_NEWLINE "it shall bring you good fortune." EZTR_CC_EVENT "" EZTR_CC_END "");
+        } else  {
+            
+            EZTR_MsgSContent_Sprintf(buf->data.content, "Hee-hee-ho! Hello, child." EZTR_CC_NEWLINE "I see you possess our mask," EZTR_CC_NEWLINE "it shall bring you good fortune." EZTR_CC_EVENT "" EZTR_CC_END "");
+        }
+}
+}
+EZTR_MSG_CALLBACK(kitanCheckFormSheen) {
+    Player* player = GET_PLAYER(play);
+    if (Player_GetMask(play) == PLAYER_MASK_KEATON){
         buf->data.text_box_type = EZTR_STANDARD_TEXT_BOX_I,
-        EZTR_MsgSContent_Sprintf(buf->data.content, "Hee-hee-ho! Hello...?" EZTR_CC_NEWLINE "Where am I...?" EZTR_CC_NEWLINE "I'm not supposed to be here..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "Anyway... Hee-hee-ho! Hello, child." EZTR_CC_NEWLINE "If you are attempting to fool me," EZTR_CC_NEWLINE "it is impossible." EZTR_CC_EVENT "" EZTR_CC_END "");
-    } else {
-        // Vanilla Dialogue:
-        EZTR_MsgSContent_Sprintf(buf->data.content, "Hee-hee-ho! Hello, child." EZTR_CC_NEWLINE "If you are attempting to fool me," EZTR_CC_NEWLINE "it is impossible." EZTR_CC_EVENT "" EZTR_CC_END "");
+                EZTR_MsgSContent_Sprintf(buf->data.content, "We Keatons can recognize our" EZTR_CC_NEWLINE "own by the sheen of our tails." EZTR_CC_EVENT "" EZTR_CC_END "");
+    }   else if (player->transformation == PLAYER_FORM_HUMAN) {
+                    buf->data.text_box_type = EZTR_STANDARD_TEXT_BOX_I,
+                        EZTR_MsgSContent_Sprintf(buf->data.content, "You're from Hyrule, aren't you?" EZTR_CC_NEWLINE "Your arrival here so soon after" EZTR_CC_NEWLINE "the strange moon is alarming." EZTR_CC_EVENT "" EZTR_CC_END "");
+    }   else if (player->transformation == PLAYER_FORM_DEKU) {
+                    buf->data.text_box_type = EZTR_STANDARD_TEXT_BOX_I,
+                        EZTR_MsgSContent_Sprintf(buf->data.content, "Do you know what happened at the" EZTR_CC_NEWLINE "Palace? I heard the Deku Princess" EZTR_CC_NEWLINE "was kidnapped! I do hope she's okay." EZTR_CC_EVENT "" EZTR_CC_END "");
+    }   else if (player->transformation == PLAYER_FORM_GORON && play->sceneId != SCENE_10YUKIYAMANOMURA2) {
+                    buf->data.text_box_type = EZTR_STANDARD_TEXT_BOX_I,
+                        EZTR_MsgSContent_Sprintf(buf->data.content, "Are the Gorons staying warm?" EZTR_CC_NEWLINE "I heard there's an eternal Winter" EZTR_CC_NEWLINE "in the mountains. Hopefully Spring" EZTR_CC_NEWLINE "arrives soon." EZTR_CC_EVENT "" EZTR_CC_END "");
+    }   else if (player->transformation == PLAYER_FORM_GORON && play->sceneId == SCENE_10YUKIYAMANOMURA2) {
+                    buf->data.text_box_type = EZTR_STANDARD_TEXT_BOX_I,
+                        EZTR_MsgSContent_Sprintf(buf->data.content, "I much prefer Spring. Wouldn't you" EZTR_CC_NEWLINE "agree? The Winters here are just" EZTR_CC_NEWLINE "too cold and it's difficult to keep" EZTR_CC_NEWLINE "my fur clean!" EZTR_CC_EVENT "" EZTR_CC_END "");
+    }   else if (player->transformation == PLAYER_FORM_ZORA) {
+                    buf->data.text_box_type = EZTR_STANDARD_TEXT_BOX_I,
+                        EZTR_MsgSContent_Sprintf(buf->data.content, "What happened at Great Bay Coast?" EZTR_CC_NEWLINE "The sea is all murky and the stench" EZTR_CC_NEWLINE "is intense! Will you let me know" EZTR_CC_NEWLINE "when the water is clean?" EZTR_CC_EVENT "" EZTR_CC_END "");
+    }   else if (player->transformation == PLAYER_FORM_FIERCE_DEITY) {
+                    buf->data.text_box_type = EZTR_STANDARD_TEXT_BOX_I,
+                        EZTR_MsgSContent_Sprintf(buf->data.content, "I sense a terrifying power coming" EZTR_CC_NEWLINE "from you. I truly hope you will use" EZTR_CC_NEWLINE "this power for the good of Termina" EZTR_CC_NEWLINE "and its people." EZTR_CC_EVENT "" EZTR_CC_END "");
+    }   else if (player->transformation != PLAYER_FORM_HUMAN || player->transformation != PLAYER_FORM_DEKU || player->transformation != PLAYER_FORM_GORON || player->transformation != PLAYER_FORM_ZORA || player->transformation != PLAYER_FORM_FIERCE_DEITY) {
+                    buf->data.text_box_type = EZTR_STANDARD_TEXT_BOX_I,
+                        EZTR_MsgSContent_Sprintf(buf->data.content, "Your appearance is rather strange." EZTR_CC_NEWLINE "I almost didn't recognise you at all." EZTR_CC_EVENT "" EZTR_CC_END "");
     }
 }
- 
+EZTR_MSG_CALLBACK(kitanCheckFormGood) {
+    Player* player = GET_PLAYER(play);
+    if (player->transformation == PLAYER_FORM_HUMAN){
+        buf->data.text_box_type = EZTR_STANDARD_TEXT_BOX_I,
+                EZTR_MsgSContent_Sprintf(buf->data.content, "But you're a good child..." EZTR_CC_NEWLINE "Let me put you to a test." EZTR_CC_EVENT "" EZTR_CC_END "");
+    }   else{
+        buf->data.text_box_type = EZTR_STANDARD_TEXT_BOX_I,
+                EZTR_MsgSContent_Sprintf(buf->data.content, "I can tell this is not your true" EZTR_CC_NEWLINE "form... But you're a good child..." EZTR_CC_NEWLINE "Let me put you to a test." EZTR_CC_EVENT "" EZTR_CC_END "");
+    }
+}
+EZTR_MSG_CALLBACK(kitanOnWrongAnswer) {
+    if ((recomp_get_config_u32("CrashMoonOnFail") == 1)) { // set to Death, death specific text
+        buf->data.text_box_type = EZTR_STANDARD_TEXT_BOX_I,
+                EZTR_MsgSContent_Sprintf(buf->data.content, "Hee-hee-ho!" EZTR_CC_NEWLINE "Your training is insufficient!" EZTR_CC_NEWLINE "Please rest and come back more" EZTR_CC_NEWLINE "prepared, child." EZTR_CC_EVENT "" EZTR_CC_END "");
+    }   else if ((recomp_get_config_u32("CrashMoonOnFail") == 2)) { // set to Moon Crash, moon specific text
+        buf->data.text_box_type = EZTR_STANDARD_TEXT_BOX_I,
+                EZTR_MsgSContent_Sprintf(buf->data.content, "Hee-hee-ho!" EZTR_CC_NEWLINE "Your training is insufficient!" EZTR_CC_NEWLINE "The moon will shed one last tear." EZTR_CC_EVENT "" EZTR_CC_END "");
+    }   else if ((recomp_get_config_u32("CrashMoonOnFail") == 0)) { // set to Vanilla, default text
+        buf->data.text_box_type = EZTR_STANDARD_TEXT_BOX_I,
+                EZTR_MsgSContent_Sprintf(buf->data.content, "Hee-hee-ho!" EZTR_CC_NEWLINE "Your training is insufficient!" EZTR_CC_NEWLINE "Come back and try again, child!" EZTR_CC_EVENT "" EZTR_CC_END "");
+    }
+}
+
 EZTR_ON_INIT void init_text() {
     // Replacements for Keaton Intro Text
     EZTR_Basic_ReplaceText(
@@ -500,6 +589,46 @@ EZTR_ON_INIT void init_text() {
         false,
         "\xBF",
         kitanInWrongLocation
+    );
+        EZTR_Basic_ReplaceText(
+    // Replacements for "We Keatons recognise our own by the sheen of our tail."
+        0x04B1,
+        EZTR_STANDARD_TEXT_BOX_I,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "\xBF",
+        kitanCheckFormSheen
+    );
+
+    EZTR_Basic_ReplaceText(
+        // Replacements for "But you're a good child... Let me put you to a test."
+        0x04B2,
+        EZTR_STANDARD_TEXT_BOX_I,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "\xBF",
+        kitanCheckFormGood
+    );
+    EZTR_Basic_ReplaceText(
+        // Replacements for getting a question wrong.
+        0x04B3,
+        EZTR_STANDARD_TEXT_BOX_I,
+        0,
+        EZTR_ICON_NO_ICON,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        EZTR_NO_VALUE,
+        false,
+        "\xBF",
+        kitanOnWrongAnswer
     );
     //Vanilla Questions
         EZTR_Basic_ReplaceText(
@@ -862,7 +991,7 @@ EZTR_ON_INIT void init_text() {
         "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What " VARIABLE_TEXT_COLOR "instrument " EZTR_CC_COLOR_DEFAULT "does the " VARIABLE_TEXT_COLOR "Skull" EZTR_CC_NEWLINE "Kid " EZTR_CC_COLOR_DEFAULT "play?" EZTR_CC_EVENT "" EZTR_CC_END "",
         quiz_color_changer
     );
-    //Custom questions
+    //Custom questions about MM
     EZTR_Basic_AddCustomText(EZTR_HNAME(CustomQuestion0),
         EZTR_STANDARD_TEXT_BOX_II,
         0,
@@ -2049,7 +2178,7 @@ EZTR_ON_INIT void init_text() {
         EZTR_NO_VALUE,
         EZTR_NO_VALUE,
         false,
-        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the name of the " VARIABLE_TEXT_COLOR "red" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "Poe Sister?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What happens when you play the " EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "Song of Time" EZTR_CC_COLOR_DEFAULT "next to a " VARIABLE_TEXT_COLOR "Song of" EZTR_CC_NEWLINE "Time block" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
         quiz_color_changer
     );
     EZTR_Basic_AddCustomText(EZTR_HNAME(OoTAnswer20),
@@ -2060,7 +2189,7 @@ EZTR_ON_INIT void init_text() {
         0x0001,
         EZTR_NO_VALUE,
         false,
-        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Joelle" EZTR_CC_NEWLINE "Meg" EZTR_CC_NEWLINE "Beth" EZTR_CC_END "",
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "It travels through time" EZTR_CC_NEWLINE "It explodes" EZTR_CC_NEWLINE "It heals you" EZTR_CC_END "",
         quiz_color_changer
     );
     EZTR_Basic_AddCustomText(EZTR_HNAME(OoTQuestion21),
@@ -2071,7 +2200,7 @@ EZTR_ON_INIT void init_text() {
         EZTR_NO_VALUE,
         EZTR_NO_VALUE,
         false,
-        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the name of the " VARIABLE_TEXT_COLOR "blue" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "Poe Sister?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What " VARIABLE_TEXT_COLOR "Magic Spell" EZTR_CC_COLOR_DEFAULT " does the" VARIABLE_TEXT_COLOR " Great" EZTR_CC_NEWLINE "Fairy" EZTR_CC_COLOR_DEFAULT " in " VARIABLE_TEXT_COLOR "Zora's Fountain " EZTR_CC_COLOR_DEFAULT "grant you?" EZTR_CC_EVENT "" EZTR_CC_END "",
         quiz_color_changer
     );
     EZTR_Basic_AddCustomText(EZTR_HNAME(OoTAnswer21),
@@ -2082,7 +2211,7 @@ EZTR_ON_INIT void init_text() {
         0x0002,
         EZTR_NO_VALUE,
         false,
-        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Meg" EZTR_CC_NEWLINE "Beth" EZTR_CC_NEWLINE "Amy" EZTR_CC_END "",
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Din's Fire" EZTR_CC_NEWLINE "Farore's Wind" EZTR_CC_NEWLINE "Nayru's Love" EZTR_CC_END "",
         quiz_color_changer
     );
     EZTR_Basic_AddCustomText(EZTR_HNAME(OoTQuestion22),
@@ -2093,7 +2222,7 @@ EZTR_ON_INIT void init_text() {
         EZTR_NO_VALUE,
         EZTR_NO_VALUE,
         false,
-        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the name of the " VARIABLE_TEXT_COLOR "green" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "Poe Sister?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What happens when you play the" EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "Sun's Song" EZTR_CC_COLOR_DEFAULT "near a Redead?" EZTR_CC_EVENT "" EZTR_CC_END "",
         quiz_color_changer
     );
     EZTR_Basic_AddCustomText(EZTR_HNAME(OoTAnswer22),
@@ -2104,7 +2233,7 @@ EZTR_ON_INIT void init_text() {
         0x0002,
         EZTR_NO_VALUE,
         false,
-        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Beth" EZTR_CC_NEWLINE "Amy" EZTR_CC_NEWLINE "Joelle" EZTR_CC_END "",
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "The Redead becomes a Big Fairy" EZTR_CC_NEWLINE "The Redead is stunned" EZTR_CC_NEWLINE "The Redead dies" EZTR_CC_END "",
         quiz_color_changer
     );
     EZTR_Basic_AddCustomText(EZTR_HNAME(OoTQuestion23),
@@ -2115,7 +2244,7 @@ EZTR_ON_INIT void init_text() {
         EZTR_NO_VALUE,
         EZTR_NO_VALUE,
         false,
-        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What is the name of the " VARIABLE_TEXT_COLOR "purple" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "Poe Sister?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "How many " VARIABLE_TEXT_COLOR "unique Gossip Stones" EZTR_CC_NEWLINE "" EZTR_CC_COLOR_DEFAULT "are scattered across Hyrule?" EZTR_CC_EVENT "" EZTR_CC_END "",
         quiz_color_changer
     );
     EZTR_Basic_AddCustomText(EZTR_HNAME(OoTAnswer23),
@@ -2126,7 +2255,7 @@ EZTR_ON_INIT void init_text() {
         0x0003,
         EZTR_NO_VALUE,
         false,
-        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "Joelle" EZTR_CC_NEWLINE "Amy" EZTR_CC_NEWLINE "Meg" EZTR_CC_END "",
+        "" EZTR_CC_THREE_CHOICE "" EZTR_CC_COLOR_GREEN "48" EZTR_CC_NEWLINE "40" EZTR_CC_NEWLINE "32" EZTR_CC_END "",
         quiz_color_changer
     );
     EZTR_Basic_AddCustomText(EZTR_HNAME(OoTQuestion24),

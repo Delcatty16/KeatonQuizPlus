@@ -8,7 +8,7 @@
 id = "keatonquizplusdelcatty16"
 
 # Version of this mod.
-version = "1.2.0"
+version = "1.3.0"
 
 # The name that will show up for this mod in the mod menu. This should be human readable.
 display_name = "Keaton Quiz Plus"
@@ -18,10 +18,16 @@ description =  """
 Makes changes to the Keaton Quiz.
 
 You can choose how fast Keaton will appear.
-How many questions are required to receive the prize
-Choose between the vanilla set of questions or alternative sets of questions based on Majora's Mask(Custom) and Ocarina of Time(OoT).
+
+How many questions are required to receive the prize.
+
+Choose between the vanilla set of questions or alternative sets of questions based on Majora's Mask(MM), Ocarina of Time(OoT) and Pictures.
+
+Option to allow Keaton to appear by simply owning the Keaton Mask and not require it to be equipped. This also allows other forms to take part in the quiz.
+
 Option to change the color of the highlighted words during the quiz.
-Option to toggle causing a Moon Crash upon getting a question wrong.
+
+Option to choose whether or not to have instant death or causing a Moon Crash upon getting a question wrong.
 
 
 Thanks to LT_Schmiddy, ThatHypedPerson, magemods and Keanine for helping me various parts of the code!"""
@@ -71,6 +77,7 @@ additional_files = [ "thumb.png" ]
 # the build scripts disable extlib compilation and packaging. You can then safely delete 
 # ./CMakeLists.txt, ./CMakePresets.json, and ./src/extlib/**
 # Mod config options
+
 [[manifest.config_options]]
 id = "QuestionSet"
 name = "Question Set"
@@ -78,13 +85,22 @@ description = """
 What types of questions will appear when taking part in the Keaton Quiz.
 
 Vanilla - The original questions and answers from Majora's Mask.
-Custom - A set of 30 additional questions based on Majora's Mask.
+MM - A set of 30 additional questions based on Majora's Mask that are different from vanilla.
 OoT - A set of 30 additional questions based on Ocarina of Time.
 Pictures - A set of 30 questions using pictures of people, masks or items.
 """
 type = "Enum"
-options = [ "Vanilla", "Custom", "OoT", "Pictures" ]
-default = "Custom"
+options = [ "Vanilla", "MM", "OoT", "Pictures" ]
+default = "Vanilla"
+
+[[manifest.config_options]]
+id = "RequireKeatonMaskEquipped"
+name = "Keaton Mask Requirement"
+description = """This option chooses if you need to have the Keaton Mask equipped in order to talk to Keaton, or just having the mask in your inventory.
+(Default is Equipped)"""
+type = "Enum"
+options = [ "Equipped", "Inventory" ]
+default = "Equipped"
 
 [[manifest.config_options]]
 id = "HighlightColour"
@@ -123,8 +139,9 @@ default = 6
 
 [[manifest.config_options]]
 id = "CrashMoonOnFail"
-name = "Moon Crash on Fail"
-description = "Turning this on will cause the moon to crash and reset the cycle if you answer any question incorrectly."
+name = "Incorrect Answer"
+description = "Choose between vanilla behaviour, instant death or causing the moon to crash and reset the cycle if you answer any question incorrectly."
 type = "Enum"
-options = [ "No", "Yes" ]
-default = "No"
+options = [ "Vanilla", "Death", "Moon Crash" ]
+default = "Vanilla"
+

@@ -1316,7 +1316,7 @@ EZTR_ON_INIT void init_text() {
         EZTR_NO_VALUE,
         EZTR_NO_VALUE,
         false,
-        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What does " VARIABLE_TEXT_COLOR "Cremia" EZTR_CC_COLOR_DEFAULT ", manager of" EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "Romani Ranch" EZTR_CC_COLOR_DEFAULT ", give you if you already" EZTR_CC_NEWLINE "have the" VARIABLE_TEXT_COLOR " Romani Mask " EZTR_CC_COLOR_DEFAULT "and a" EZTR_CC_NEWLINE "full wallet?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        "Answer me this..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What can " VARIABLE_TEXT_COLOR "Cremia" EZTR_CC_COLOR_DEFAULT ", manager of" EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "Romani Ranch" EZTR_CC_COLOR_DEFAULT ", randomly give you " EZTR_CC_NEWLINE "if you already have the" VARIABLE_TEXT_COLOR " Romani" EZTR_CC_NEWLINE "Mask" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
         quiz_color_changer
     );
     EZTR_Basic_AddCustomText(EZTR_HNAME(CustomAnswer14),

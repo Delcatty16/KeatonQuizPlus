@@ -96,7 +96,7 @@ default = "Vanilla"
 [[manifest.config_options]]
 id = "RequireKeatonMaskEquipped"
 name = "Keaton Mask Requirement"
-description = """This option chooses if you need to have the Keaton Mask equipped in order to talk to Keaton, or just having the mask in your inventory.
+description = """Allows the choice on if you want the vanilla behaviour of needing to have the Keaton Mask equipped in order to talk to Keaton, or simply just having the mask in your inventory and not needing it to be equipped. This allows non-human forms to talk to Keaton and take part in the quiz.
 (Default is Equipped)"""
 type = "Enum"
 options = [ "Equipped", "Inventory" ]

@@ -2178,7 +2178,7 @@ EZTR_ON_INIT void init_text() {
         EZTR_NO_VALUE,
         EZTR_NO_VALUE,
         false,
-        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What happens when you play the " EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "Song of Time" EZTR_CC_COLOR_DEFAULT "next to a " VARIABLE_TEXT_COLOR "Song of" EZTR_CC_NEWLINE "Time block" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
+        "Answer me this..." EZTR_CC_NEWLINE "About your adventures in Hyrule..." EZTR_CC_NEWLINE "Pick one of the three choices..." EZTR_CC_NEWLINE "" EZTR_CC_CARRIAGE_RETURN "" EZTR_CC_BOX_BREAK2 "What happens when you play the " EZTR_CC_NEWLINE "" VARIABLE_TEXT_COLOR "Song of Time " EZTR_CC_COLOR_DEFAULT "next to a " VARIABLE_TEXT_COLOR "Song of" EZTR_CC_NEWLINE "Time block" EZTR_CC_COLOR_DEFAULT "?" EZTR_CC_EVENT "" EZTR_CC_END "",
         quiz_color_changer
     );
     EZTR_Basic_AddCustomText(EZTR_HNAME(OoTAnswer20),
